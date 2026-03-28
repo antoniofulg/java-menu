@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.net.InetSocketAddress;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import com.sun.net.httpserver.HttpServer;
 
 public class MenuServer {
@@ -19,6 +21,22 @@ public class MenuServer {
 
 			exchange.getResponseHeaders().add("Content-Type", "application/json; charset=UTF-8");
 
+			exchange.sendResponseHeaders(200, bytes.length);
+
+			OutputStream responseBody = exchange.getResponseBody();
+			responseBody.write(bytes);
+			responseBody.close();
+		});
+
+		httpServer.createContext("/menu/total", exchange -> {
+			String json = Files.readString(Path.of("menu.json"));
+			byte[] bytes = json.getBytes();
+
+			JsonArray items = JsonParser.parseString(json).getAsJsonArray();
+			int total = items.size();
+
+			exchange.getResponseHeaders().add("Content-Type", "application/json; charset=UTF-8");
+			exchange.getResponseHeaders().add("Total-Items", String.valueOf(total));
 			exchange.sendResponseHeaders(200, bytes.length);
 
 			OutputStream responseBody = exchange.getResponseBody();

@@ -1,49 +1,57 @@
 [
-	{
-		"id": 1,
-		"name": "Refresco do Chaves",
-		"description": "Suco de limão, que parece tamarindo, mas tem gosto de groselha\n",
-		"category": "BEVERAGES",
-		"price": 2.99
-	},
-	{
-		"id": 2,
-		"name": "Sanduíche de Presunto do Chaves",
-		"description": "Sanduíche de presunto simples, mas feito com muito amor.",
-		"category": "MAIN_COURSES",
-		"price": 3.5,
-		"priceWithDiscount": 2.99
-	},
-	{
-		"id": 5,
-		"name": "Torta de Frango da Dona Florinda",
-		"description": "Torta de frango com recheio cremoso e massa crocante.",
-		"category": "MAIN_COURSES",
-		"price": 12.99,
-		"priceWithDiscount": 10.99
-	},
-	{
-		"id": 6,
-		"name": "Pipoca do Quico",
-		"description": "Balde de pipoca preparado com carinho pelo Quico.",
-		"category": "MAIN_COURSES",
-		"price": 4.99,
-		"priceWithDiscount": 3.99
-	},
-	{
-		"id": 7,
-		"name": "Água de Jamaica",
-		"description": "Água aromatizada com hibisco e toque de açúcar.",
-		"category": "BEVERAGES",
-		"price": 2.5,
-		"priceWithDiscount": 2.0
-	},
-	{
-		"id": 9,
-		"name": "Churros do Chaves",
-		"description": "Churros recheados com doce de leite, clássicos e irresistíveis.",
-		"category": "DESSERTS",
-		"price": 4.99,
-		"priceWithDiscount": 3.99
-	}
+  {
+    "id": 1,
+    "name": "Refresco do Chaves",
+    "description": "Suco de limão, que parece tamarindo, mas tem gosto de groselha\n",
+    "category": "BEVERAGES",
+    "price": 2.99
+  },
+  {
+    "id": 2,
+    "name": "Sanduíche de Presunto do Chaves",
+    "description": "Sanduíche de presunto simples, mas feito com muito amor.",
+    "category": "MAIN_COURSES",
+    "price": 3.5,
+    "priceWithDiscount": 2.99
+  },
+  {
+    "id": 5,
+    "name": "Torta de Frango da Dona Florinda",
+    "description": "Torta de frango com recheio cremoso e massa crocante.",
+    "category": "MAIN_COURSES",
+    "price": 12.99,
+    "priceWithDiscount": 10.99
+  },
+  {
+    "id": 6,
+    "name": "Pipoca do Quico",
+    "description": "Balde de pipoca preparado com carinho pelo Quico.",
+    "category": "MAIN_COURSES",
+    "price": 4.99,
+    "priceWithDiscount": 3.99
+  },
+  {
+    "id": 7,
+    "name": "Água de Jamaica",
+    "description": "Água aromatizada com hibisco e toque de açúcar.",
+    "category": "BEVERAGES",
+    "price": 2.5,
+    "priceWithDiscount": 2.0
+  },
+  {
+    "id": 9,
+    "name": "Churros do Chaves",
+    "description": "Churros recheados com doce de leite, clássicos e irresistíveis.",
+    "category": "DESSERTS",
+    "price": 4.99,
+    "priceWithDiscount": 3.99
+  },
+  {
+    "name": "Guacamole do Quico",
+    "description": "Guacamole fresco com tortilla chips.",
+    "category": "STARTERS",
+    "price": 5.99,
+    "priceWithDiscount": 4.49,
+    "id": 10
+  }
 ]
