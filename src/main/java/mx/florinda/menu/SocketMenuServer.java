@@ -7,21 +7,25 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SocketMenuServer {
 	final static int PORT = 8000;
 
 	public static void main(String[] args) throws Exception {
-		try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-			System.out.println("Server is running on port " + PORT);
-			System.out.println("Press Ctrl+C to stop");
 
-			while (true) {
-				Socket clientSocket = serverSocket.accept();
+		try (ExecutorService executorService = Executors.newFixedThreadPool(50)) {
 
-				Thread thread = new Thread(() -> requestHandler(clientSocket));
-				thread.start();
+			try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+				System.out.println("Server is running on port " + PORT);
+				System.out.println("Press Ctrl+C to stop");
 
+				while (true) {
+					Socket clientSocket = serverSocket.accept();
+
+					executorService.execute(() -> requestHandler(clientSocket));
+				}
 			}
 		}
 	}
