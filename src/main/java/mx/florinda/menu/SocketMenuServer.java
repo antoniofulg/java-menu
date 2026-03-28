@@ -17,32 +17,44 @@ public class SocketMenuServer {
 			System.out.println("Press Ctrl+C to stop");
 
 			while (true) {
-				try (Socket clientSocket = serverSocket.accept()) {
-					InputStream clientInputStream = clientSocket.getInputStream();
+				Socket clientSocket = serverSocket.accept();
 
-					StringBuilder requestBuilder = new StringBuilder();
+				Thread thread = new Thread(() -> requestHandler(clientSocket));
+				thread.start();
 
-					int data;
-					do {
-						data = clientInputStream.read();
-						requestBuilder.append((char) data);
-					} while (clientInputStream.available() > 0);
-
-					String request = requestBuilder.toString();
-					System.out.println(request);
-
-					Path path = Path.of("menu.json");
-					String json = Files.readString(path);
-
-					OutputStream clientOutputStream = clientSocket.getOutputStream();
-					PrintStream printStream = new PrintStream(clientOutputStream);
-
-					printStream.println("HTTP/1.1 200 OK");
-					printStream.println("Content-Type: application/json; charset=UTF-8");
-					printStream.println();
-					printStream.println(json);
-				}
 			}
+		}
+	}
+
+	private static void requestHandler(Socket clientSocket) {
+		try (clientSocket) {
+			InputStream clientInputStream = clientSocket.getInputStream();
+
+			StringBuilder requestBuilder = new StringBuilder();
+
+			int data;
+			do {
+				data = clientInputStream.read();
+				requestBuilder.append((char) data);
+			} while (clientInputStream.available() > 0);
+
+			String request = requestBuilder.toString();
+			System.out.println(request);
+
+			Thread.sleep(250);
+
+			Path path = Path.of("menu.json");
+			String json = Files.readString(path);
+
+			OutputStream clientOutputStream = clientSocket.getOutputStream();
+			PrintStream printStream = new PrintStream(clientOutputStream);
+
+			printStream.println("HTTP/1.1 200 OK");
+			printStream.println("Content-Type: application/json; charset=UTF-8");
+			printStream.println();
+			printStream.println(json);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 }
