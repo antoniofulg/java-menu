@@ -1,13 +1,14 @@
 package mx.florinda.menu;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ViewHistory {
 
 	private final Database database;
 
-	private final Map<MenuItem, LocalDateTime> views = new HashMap<>();
+	private final ConcurrentHashMap<MenuItem, LocalDateTime> views = new ConcurrentHashMap<>();
 
 	public ViewHistory(Database database) {
 		this.database = database;
